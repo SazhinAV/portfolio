@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <link rel="stylesheet" href="style.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Моя веб страница.</title>
+</head>
+<body>
+	<header class="header">
+<p align = "center">
+	<img src="png.png" width="60" height="50" style="text-align: center;"></p>
+
+	
+				<section style="text-align: center;">
+					<a style="color: #ffffff;" href="">Главная
+					<a style="color: #ffffff;" href="">О нас
+			 		<a style="color: #ffffff;" href="">Портфолио
+			 		<a style="color: #ffffff;" href="">Услуги
+					<a style="color: #ffffff;" href="">Контактная форма
+						<a href="">
+				</section>
+			 <section style="text-align: center;">
+			 	<input id="" type="">
+			 	<button>Найти</button>
+			 </section>
+
+			 </header>
+
+			 <h1 class="text-blak">Календарь</h1>
+<p class="text-blak">Ноябрь 2023 года</p>
+
+  <div id="calendar"></div>
+
+  <script>
+    function createCalendar(elem, year, month) {
+
+      let mon = month - 1; // месяцы в JS идут от 0 до 11, а не от 1 до 12
+      let d = new Date(year, mon);
+
+      let table = '<table><tr><th>пн</th><th>вт</th><th>ср</th><th>чт</th><th>пт</th><th>сб</th><th>вс</th></tr><tr>';
+
+      // пробелы для первого ряда
+      // с понедельника до первого дня месяца
+      // * * * 1  2  3  4
+      for (let i = 0; i < getDay(d); i++) {
+        table += '<td></td>';
+      }
+
+      // <td> ячейки календаря с датами
+      while (d.getMonth() == mon) {
+        table += '<td>' + d.getDate() + '</td>';
+
+        if (getDay(d) % 7 == 6) { // вс, последний день - перевод строки
+          table += '</tr><tr>';
+        }
+
+        d.setDate(d.getDate() + 1);
+      }
+
+      // добить таблицу пустыми ячейками, если нужно
+      // 29 30 31 * * * *
+      if (getDay(d) != 0) {
+        for (let i = getDay(d); i < 7; i++) {
+          table += '<td></td>';
+        }
+      }
+
+      // закрыть таблицу
+      table += '</tr></table>';
+
+      elem.innerHTML = table;
+    }
+
+    function getDay(date) { // получить номер дня недели, от 0 (пн) до 6 (вс)
+      let day = date.getDay();
+      if (day == 0) day = 7; // сделать воскресенье (0) последним днем
+      return day - 1;
+    }
+
+    createCalendar(calendar, 2023, 11);
+  </script>
+
+
+<main class="me1">
+		<section class="me">
+			<h2>О нас</h2>
+			<p>О себе</p>
+		</section>
+
+		<section class="services">
+			<h2>Услуги</h2>
+			<p>Услуги</p>
+		</section>
+
+
+		
+	</main>
+
+
+		
+
+	<footer>
+		
+		<div class="footer-content">
+			<div class="footer-info">
+				<h3>Контактная информация</h3>
+				<p>Телефон: 8(800)353-53-55</p>
+				<p>Email: Проще позвонить</p>
+				<p>Адрес: Независимых </p>
+			</div>
+			<div class="social-icons"> 
+			<h3>Мы в социальных сетях</h3>
+		
+			
+		
+			
+		</div>
+	</footer>
+</body>
+</html>
